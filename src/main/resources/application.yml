@@ -4,21 +4,15 @@ server:
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
-
-#    gateway:
-#      routes:
-#        - id: user-center
-#          uri: lb://user-center
-#          predicates:
-#            - Path=/users/**
-#        - id: email-service
-#          uri: lb://email-service
-#          predicates:
-#            - Path=/emails/**
+      routes:
+        - id: user-center
+          uri: http://127.0.0.1:8080/users
+          predicates:
+            - Path=/users/**
+        - id: email-service
+          uri: lb://email-service
+          predicates:
+            - Path=/emails/**
 
   application:
     name: gateway-server
