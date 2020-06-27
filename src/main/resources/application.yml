@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+
+#    gateway:
+#      routes:
+#        - id: user-center
+#          uri: lb://user-center
+#          predicates:
+#            - Path=/users/**
+#        - id: email-service
+#          uri: lb://email-service
+#          predicates:
+#            - Path=/emails/**
+
+  application:
+    name: gateway-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
